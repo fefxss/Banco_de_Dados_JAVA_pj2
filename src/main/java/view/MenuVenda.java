@@ -10,7 +10,8 @@ import static javax.swing.JOptionPane.showInputDialog;
 
 public class MenuVenda {
     public void menu() {
-        String[] item = {"Selmini", "Patricia", "Sair"};
+        String[] item = {"Inserir", "Pesquisar", "Listar",
+                "Atualizar", "Excluir", "Sair"};
         String opcao;
 
         do {
@@ -21,18 +22,25 @@ public class MenuVenda {
                     null,
                     item,
                     item[0]);
-            switch (opcao.toLowerCase()){
+
+            switch(opcao.toLowerCase()) {
                 case "inserir" -> inserir();
                 case "venda" -> new MenuVenda().menu();
             }
         }
-        while (!opcao.toLowerCase().equals("sair"));
+        while(!opcao.toLowerCase().equals("sair"));
     }
 
     private void inserir() {
         Vendedor vendedor = new Vendedor();
         List<Vendedor> lista = new VendedorDAO().listar();
 
-        vendedor =
+        vendedor = (Vendedor) showInputDialog(null,
+                "Selecione uma opção",
+                "*** MENU VENDA ***",
+                INFORMATION_MESSAGE,
+                null,
+                lista.toArray(),
+                lista.get(0));
     }
 }

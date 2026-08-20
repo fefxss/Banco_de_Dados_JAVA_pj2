@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VendedorDAO implements GenericDAO<Vendedor, Integer> {
@@ -26,20 +27,22 @@ public class VendedorDAO implements GenericDAO<Vendedor, Integer> {
 
     @Override
     public List<Vendedor> listar() {
+        List<Vendedor> lista = new ArrayList<>();
         String sql = "select * from java_vendedor";
         try(Connection connection = ConnectionFactory.obterConexao();
             PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery()){
-            while(rs.next()){
+            ResultSet rs = ps.executeQuery()) {
+            while(rs.next()) {
                 Vendedor vendedor = new Vendedor();
                 vendedor.setId(rs.getInt("id"));
                 vendedor.setNome(rs.getString("nome"));
                 lista.add(vendedor);
             }
         }
-        catch (SQLException e){
+        catch(SQLException e) {
 
         }
-        return null;
+
+        return lista;
     }
 }
