@@ -10,15 +10,13 @@ import java.util.Properties;
 public final class ConnectionFactory {
     private static final Properties PROPS = carregarPropriedades();
 
-    private ConnectionFactory() {} // impede a instanciação
+    private ConnectionFactory() { } // impede a instanciação
 
     public static Connection obterConexao() throws SQLException {
-
         return DriverManager.getConnection(
                 PROPS.getProperty("db.url"),
                 PROPS.getProperty("db.user"),
-                PROPS.getProperty("db.password")
-        );
+                PROPS.getProperty("db.password"));
     }
 
     private static Properties carregarPropriedades() {

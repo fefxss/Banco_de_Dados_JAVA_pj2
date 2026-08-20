@@ -1,8 +1,16 @@
 package model;
 
 public class Vendedor {
+    private Integer id;
     private String nome;
-    private int id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -10,13 +18,5 @@ public class Vendedor {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
